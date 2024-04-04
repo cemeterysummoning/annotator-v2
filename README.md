@@ -3,7 +3,7 @@ This annotator was built for the specific purpose of annotating videos for the M
 
 Videos must be in .mp4 format under an h.264 encoding. `ffmpeg` can be used to achieve this conversion.
 
-The annotator can be accessed at [this link](https://cemeterysummoning.github.io/annotator/).
+The annotator can be accessed at [this link](https://cemeterysummoning.github.io/annotator-v2/).
 ```
  ffmpeg -i input.avi -vcodec libx264 output.mp4
  ```
