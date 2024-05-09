@@ -12,7 +12,7 @@ let imageContainer = document.getElementById("specificframe")
 let current_frame = 0;
 let agents = [{
     name: "tip",
-    height: 75, 
+    height: 175, 
     width: 12
 }, {
     name: "tail",
