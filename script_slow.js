@@ -20,6 +20,53 @@ let agents = [{
     width: 12
 }];
 
+let new_agents1 = [{
+    name: "needlebarb",
+    lm: 75, // 5.5 mm
+    wm: 12, // 2 mm
+    ln: 12, // 2 mm
+    wn: 12, // 1 mm
+    lt: 12  // 2.5 ~ 3.5 mm
+}];
+
+let new_agents2 = [{
+    name: "needlemodule",
+    ls: 75, // 5 mm
+    ws: 12, // 2 mm
+    lc: 12, // 1 mm
+    lb: 12  // 0.5 mm
+}];
+
+function generateAgentPointsNew() {
+    agent_points = []
+    
+    let temp = []
+
+    // Agent1 Needle with Barbs --> 9 points
+
+    temp.push([-new_agents1["lt"] - new_agents1["ln"] - new_agents1["lm"]/2, 0])
+    temp.push([-new_agents1["ln"] - new_agents1["lm"]/2, new_agents1["wn"]/2])
+    temp.push([-new_agents1["lm"]/2, new_agents1["wn"]/2])
+    temp.push([-new_agents1["lm"]/2, new_agents1["wm"]/2])
+    temp.push([new_agents1["lm"]/2, new_agents1["wm"]/2])
+    temp.push([new_agents1["lm"]/2, -new_agents1["wm"]/2])
+    temp.push([-new_agents1["lm"]/2, -new_agents1["wm"]/2])
+    temp.push([-new_agents1["lm"]/2, new_agents1["wn"]/2])
+    temp.push([-new_agents1["ln"] - new_agents1["lm"]/2, new_agents1["wn"]/2])
+
+    // Agent2 Drug Module with magnets inside --> 4 points?
+
+    temp.push([-new_agents2["ls"]/2, new_agents2["ws"]/2])
+    temp.push([new_agents2["ls"]/2, new_agents2["ws"]/2])
+    temp.push([new_agents2["ls"]/2, -new_agents2["ws"]/2])
+    temp.push([-new_agents2["ls"]/2, -new_agents2["ws"]/2])
+
+    //
+
+    agent_points.push(temp)
+    
+}
+
 
 let agent_points = []
 for (let i = 0; i < agents.length; i++) {
@@ -46,6 +93,19 @@ function generateAgentPoints() {
         agent_points.push(temp)
     }
 }
+
+// Function added for new agent1 template
+
+/* Agent 1 shape
+
+                    ---------
+                    |          |
+                    
+
+
+
+*/
+
 let focused_agent = 0;
 let radius;
 let center;
