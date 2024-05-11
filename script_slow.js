@@ -10,32 +10,31 @@ let imageContainer = document.getElementById("specificframe")
 
 // initial variables and data holders
 let current_frame = 0;
-let agents = [{
-    name: "tip",
-    height: 175, 
-    width: 12
-}, {
-    name: "tail",
-    height: 50,
-    width: 12
-}];
+// let agents = [{
+//     name: "tip",
+//     height: 175, 
+//     width: 12
+// }, {
+//     name: "tail",
+//     height: 50,
+//     width: 12
+// }];
 
-let new_agents1 = [{
+let agents = [{
     name: "needlebarb",
-    lm: 75, // 5.5 mm
-    wm: 12, // 2 mm
+    ls: 75, // 5.5 mm
+    ws: 12, // 2 mm
     ln: 12, // 2 mm
     wn: 12, // 1 mm
     lt: 12  // 2.5 ~ 3.5 mm
-}];
-
-let new_agents2 = [{
+}, {
     name: "needlemodule",
     ls: 75, // 5 mm
     ws: 12, // 2 mm
     lc: 12, // 1 mm
     lb: 12  // 0.5 mm
 }];
+
 
 function generateAgentPointsNew() {
     agent_points = []
@@ -44,41 +43,63 @@ function generateAgentPointsNew() {
 
     // Agent1 Needle with Barbs --> 9 points
 
-    temp.push([-new_agents1["lt"] - new_agents1["ln"] - new_agents1["lm"]/2, 0])
-    temp.push([-new_agents1["ln"] - new_agents1["lm"]/2, new_agents1["wn"]/2])
-    temp.push([-new_agents1["lm"]/2, new_agents1["wn"]/2])
-    temp.push([-new_agents1["lm"]/2, new_agents1["wm"]/2])
-    temp.push([new_agents1["lm"]/2, new_agents1["wm"]/2])
-    temp.push([new_agents1["lm"]/2, -new_agents1["wm"]/2])
-    temp.push([-new_agents1["lm"]/2, -new_agents1["wm"]/2])
-    temp.push([-new_agents1["lm"]/2, new_agents1["wn"]/2])
-    temp.push([-new_agents1["ln"] - new_agents1["lm"]/2, new_agents1["wn"]/2])
-
+    temp.push([-agents[0]["lt"] - agents[0]["ln"] - agents[0]["ls"]/2, 0])
+    temp.push([-agents[0]["ln"] - agents[0]["ls"]/2, agents[0]["wn"]/2])
+    temp.push([-agents[0]["ls"]/2, agents[0]["wn"]/2])
+    temp.push([-agents[0]["ls"]/2, agents[0]["ws"]/2])
+    temp.push([agents[0]["ls"]/2, agents[0]["ws"]/2])
+    temp.push([agents[0]["ls"]/2, -agents[0]["ws"]/2])
+    temp.push([-agents[0]["ls"]/2, -agents[0]["ws"]/2])
+    temp.push([-agents[0]["ls"]/2, agents[0]["wn"]/2])
+    temp.push([-agents[0]["ln"] - agents[0]["ls"]/2, agents[0]["wn"]/2])
+    agent_points.push(temp)
     // Agent2 Drug Module with magnets inside --> 4 points?
-
-    temp.push([-new_agents2["ls"]/2, new_agents2["ws"]/2])
-    temp.push([new_agents2["ls"]/2, new_agents2["ws"]/2])
-    temp.push([new_agents2["ls"]/2, -new_agents2["ws"]/2])
-    temp.push([-new_agents2["ls"]/2, -new_agents2["ws"]/2])
+    temp = []
+    temp.push([-agents[1]["ls"]/2, agents[1]["ws"]/2])
+    temp.push([agents[1]["ls"]/2, agents[1]["ws"]/2])
+    temp.push([agents[1]["ls"]/2, -agents[1]["ws"]/2])
+    temp.push([-agents[1]["ls"]/2, -agents[1]["ws"]/2])
 
     //
-
     agent_points.push(temp)
-    
 }
 
 
 let agent_points = []
-for (let i = 0; i < agents.length; i++) {
-    let temp = []
+let temp = []
 
-    temp.push([-agents[i]["width"] / 2, -agents[i]["height"] / 2])
-    temp.push([agents[i]["width"] / 2, -agents[i]["height"] / 2])
-    temp.push([agents[i]["width"] / 2, agents[i]["height"] / 2])
-    temp.push([-agents[i]["width"] / 2, agents[i]["height"] / 2])
+    // Agent1 Needle with Barbs --> 9 points
 
+    temp.push([-agents[0]["lt"] - agents[0]["ln"] - agents[0]["ls"]/2, 0])
+    temp.push([-agents[0]["ln"] - agents[0]["ls"]/2, agents[0]["wn"]/2])
+    temp.push([-agents[0]["ls"]/2, agents[0]["wn"]/2])
+    temp.push([-agents[0]["ls"]/2, agents[0]["ws"]/2])
+    temp.push([agents[0]["ls"]/2, agents[0]["ws"]/2])
+    temp.push([agents[0]["ls"]/2, -agents[0]["ws"]/2])
+    temp.push([-agents[0]["ls"]/2, -agents[0]["ws"]/2])
+    temp.push([-agents[0]["ls"]/2, agents[0]["wn"]/2])
+    temp.push([-agents[0]["ln"] - agents[0]["ls"]/2, agents[0]["wn"]/2])
     agent_points.push(temp)
-}
+    // Agent2 Drug Module with magnets inside --> 4 points?
+    temp = []
+    temp.push([-agents[1]["ls"]/2, agents[1]["ws"]/2])
+    temp.push([agents[1]["ls"]/2, agents[1]["ws"]/2])
+    temp.push([agents[1]["ls"]/2, -agents[1]["ws"]/2])
+    temp.push([-agents[1]["ls"]/2, -agents[1]["ws"]/2])
+
+    //
+    agent_points.push(temp)
+// generateAgentPointsNew()
+// for (let i = 0; i < agents.length; i++) {
+//     let temp = []
+
+//     temp.push([-agents[i]["width"] / 2, -agents[i]["height"] / 2])
+//     temp.push([agents[i]["width"] / 2, -agents[i]["height"] / 2])
+//     temp.push([agents[i]["width"] / 2, agents[i]["height"] / 2])
+//     temp.push([-agents[i]["width"] / 2, agents[i]["height"] / 2])
+
+//     agent_points.push(temp)
+// }
 
 function generateAgentPoints() {
     agent_points = []
@@ -109,7 +130,7 @@ function generateAgentPoints() {
 let focused_agent = 0;
 let radius;
 let center;
-let colors = ["#74ee15", "#f000ff", "#159ca1", "#f0823e"]
+let colors = ["#74ee15", "#34d2eb", "#159ca1", "#f0823e"]
 let final_data = []
 let frames = [];
 let current_point = 0;
@@ -344,9 +365,9 @@ function put_image(index) {
     requested_ctx.putImageData(frames[index], 0, 0);
     for (let i = 0; i < agents.length; i++) {
         requested_ctx.strokeStyle = colors[i]
-        console.log(requested_ctx.strokeStyle)
         let temp_data = final_data[index].location[agents[i].name]
         let pts = computeRecPoints(temp_data["coords"], temp_data["angle"], i)
+        requested_ctx.beginPath()
         requested_ctx.moveTo(...pts[0])
         for (let j = 1; j < pts.length; j++) {
             requested_ctx.lineTo(...pts[j])
@@ -354,6 +375,7 @@ function put_image(index) {
         }
         requested_ctx.lineTo(...pts[0])
         requested_ctx.stroke()
+        requested_ctx.closePath()
     }
 
 }
@@ -394,65 +416,66 @@ window.addEventListener('keydown', event => {
     }
 })
 let shiftOn = false
+let altOn = false
 window.addEventListener('keydown', event => {
     if (event.code === "ArrowUp") {
         if (shiftOn) {
-            agents[current_agent].height++
-            generateAgentPoints()
+            agents[current_agent].ls++
+            generateAgentPointsNew()
             console.log("here")
             put_image(current_frame)
         } else {
             requested_ctx.clearRect(0, 0, requested_frames.width, requested_frames.height);
             event.preventDefault();
-            final_data[current_frame]["location"][agents[current_agent].name]["coords"][1] -=1
+            final_data[current_frame]["location"][agents[current_agent].name]["coords"][1] -= altOn ? 3 : 1
             put_image(current_frame)
         }
     } else if (event.code === "ArrowDown") {
         if (shiftOn) {
-            agents[current_agent].height--
-            generateAgentPoints()
+            agents[current_agent].ls--
+            generateAgentPointsNew()
             put_image(current_frame)
 
         } else {
             requested_ctx.clearRect(0, 0, requested_frames.width, requested_frames.height);
             event.preventDefault()
-            final_data[current_frame]["location"][agents[current_agent].name]["coords"][1] +=1
+            final_data[current_frame]["location"][agents[current_agent].name]["coords"][1] += altOn ? 3 : 1
             put_image(current_frame)
         }
     } else if (event.code === "ArrowLeft") {
         if (shiftOn) {
-            agents[current_agent].width--
-            generateAgentPoints()
+            agents[current_agent].ws--
+            generateAgentPointsNew()
             put_image(current_frame)
 
         } else {
             requested_ctx.clearRect(0, 0, requested_frames.width, requested_frames.height);
             event.preventDefault()
-            final_data[current_frame]["location"][agents[current_agent].name]["coords"][0] -=1
+            final_data[current_frame]["location"][agents[current_agent].name]["coords"][0] -= altOn ? 3 : 1
             put_image(current_frame)
         }
     } else if (event.code === "ArrowRight") {
         if (shiftOn) {
-            agents[current_agent].width++
-            generateAgentPoints()
+            agents[current_agent].ws++
+            generateAgentPointsNew()
             put_image(current_frame)
 
         } else {
             requested_ctx.clearRect(0, 0, requested_frames.width, requested_frames.height);
             event.preventDefault()
-            final_data[current_frame]["location"][agents[current_agent].name]["coords"][0] +=1
+            final_data[current_frame]["location"][agents[current_agent].name]["coords"][0] += altOn ? 3 : 1
             put_image(current_frame)
         }
         
     } else if (event.code === "KeyA") {
         requested_ctx.clearRect(0, 0, requested_frames.width, requested_frames.height);
         event.preventDefault()
-        final_data[current_frame]["location"][agents[current_agent].name]["angle"] -= 0.01
+        final_data[current_frame]["location"][agents[current_agent].name]["angle"] -= altOn ? 0.03 : 0.01
         put_image(current_frame)
     } else if (event.code === "KeyD") {
         requested_ctx.clearRect(0, 0, requested_frames.width, requested_frames.height);
         event.preventDefault()
-        final_data[current_frame]["location"][agents[current_agent].name]["angle"] += 0.01
+        final_data[current_frame]["location"][agents[current_agent].name]["angle"] += altOn ? 0.03 : 0.01
         put_image(current_frame)
     }
 })
@@ -460,12 +483,18 @@ window.addEventListener('keydown', event => {
 window.addEventListener('keydown', event => {
     if (event.key === "Shift") {
         shiftOn = true
+    } 
+    if (event.key === "Alt") {
+        altOn = true
     }
 })
 
 window.addEventListener('keyup', event => {
     if (event.key === "Shift") {
         shiftOn = false
+    } 
+    if (event.key === "Alt") {
+        altOn = false
     }
 })
 
