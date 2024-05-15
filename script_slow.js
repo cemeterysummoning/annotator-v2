@@ -22,17 +22,17 @@ let current_frame = 0;
 
 let agents = [{
     name: "needlebarb",
-    ls: 75, // 5.5 mm
-    ws: 12, // 2 mm
-    ln: 12, // 2 mm
-    wn: 12, // 1 mm
-    lt: 12  // 2.5 ~ 3.5 mm
+    lm: 75, // 5.5 mm
+    ws: 27, // 2 mm
+    ln: 27, // 2 mm
+    wn: 14, // 1 mm
+    lt: 35  // 2.5 ~ 3.5 mm
 }, {
     name: "needlemodule",
-    ls: 75, // 5 mm
-    ws: 12, // 2 mm
-    lc: 12, // 1 mm
-    lb: 12  // 0.5 mm
+    ls: 50, // 5 mm
+    ws: 20, // 2 mm
+    lc: 10, // 1 mm
+    lb: 5  // 0.5 mm
 }];
 
 
@@ -43,7 +43,7 @@ function generateAgentPointsNew() {
 
     // Agent1 Needle with Barbs --> 9 points
 
-    temp.push([-agents[0]["lt"] - agents[0]["ln"] - agents[0]["ls"]/2, 0])
+    temp.push([-agents[0]["lt"] - agents[0]["ln"] - agents[0]["lm"]/2, 0])
     temp.push([-agents[0]["ln"] - agents[0]["ls"]/2, agents[0]["wn"]/2])
     temp.push([-agents[0]["ls"]/2, agents[0]["wn"]/2])
     temp.push([-agents[0]["ls"]/2, agents[0]["ws"]/2])
